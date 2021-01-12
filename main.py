@@ -1,44 +1,38 @@
-import matplotlib.pyplot as plt
-import pandas as pd
+import plotting
+import readingcsv
 
 
-def print_name(name):
-    print(name)
+def user_input_switch():
+    txt_input = input("Welcome to this ASN_BANK application!\n"
+                      "Option 1. Enter a csv file_name to scan\n"
+                      "Option 2. Read csv in memory\n"
+                      "Option 3. Print all search queries\n"    # Not implemented 
+                      "Option 4. Plot current data\n"
+                      "Option 5. Print this message again\n"
+                      "Enter a number: ")
+    return input_switch(txt_input)
 
 
-def read_csv(file_name):
-    result = {}
-    file = open(file_name)
-    try:
-        for line in file:
-            line_list = line.split(",")
-            other_account_column = line_list[17]
-            changed_amount_column = float(line_list[10])
-            result[other_account_column] = changed_amount_column
-
-    finally:
-        file.close()
-        print(result)
-        return result
-
-
-def plot_histo(dictionary_to_plot):
-    dataframe = pd.DataFrame({'keys': dictionary_to_plot.keys(), 'values': dictionary_to_plot.values()})
-    dataframe_sorted = dataframe.sort_values(['values'])
-    print(dataframe_sorted)
-
-    plt.figure(figsize=(18, 9))
-    plt.bar('keys', 'values', data=dataframe_sorted)
-
-    # set figure details
-    plt.xlabel("keys")
-    plt.ylabel("values")
-    plt.xticks([])
-    plt.show()
+def input_switch(input_arg):
+    if input_arg == "1":
+        readingcsv.ask_csv_file()
+        return False
+    elif input_arg == "2":
+        readingcsv.read_csv()
+    elif input_arg == "4":
+        plotting.plot_histo(readingcsv.get_global_expense_value_dictionary())
+        return False
+    elif input_arg == "5":
+        return False
+    else:
+        print("default, exiting program..")
+        return True
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    csv_dic = read_csv("resources/0708742548_28122020_215932.csv")
-    plot_histo(csv_dic)
-
+    while True:
+        print("======================")
+        if user_input_switch():
+            break
+        print("\n\n")
+    # file names: resources/0708742548_28122020_215932.csv
