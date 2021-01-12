@@ -37,9 +37,10 @@ def input_switch(input_arg):
 
 
 if __name__ == '__main__':
+    # file names: resources/0708742548_28122020_215932.csv
     while True:
         print("======================")
         if user_input_switch():
             break
         print("\n\n")
-    # file names: resources/0708742548_28122020_215932.csv
+

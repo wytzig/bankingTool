@@ -10,9 +10,10 @@ def create_query():
     with open(filename, "a") as file:
         name = input("What is the name (key) of the query?: ")
         values_input = input("What are the search values? (separate by comma): ")
+
         list_of_values = values_input.split(",")
         query = {name: list_of_values}
-        file.write(json.dumps(query) + "\n")    # use json.loads to do the reverse
+        file.write(json.dumps(query) + "\n")
         print("appended the following line to database: ", query)
 
 
@@ -24,4 +25,4 @@ def read_queries():
                 file_line_dic = ast.literal_eval(line)
                 print(file_line_dic)
         finally:
-            print("end of read..")
+            print("finished reading")
