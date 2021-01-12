@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-def plot_histo(dictionary_to_plot):
+def plot_histo(dictionary_to_plot, name_of_plot):
     dataframe = pd.DataFrame({'keys': dictionary_to_plot.keys(), 'values': dictionary_to_plot.values()})
     dataframe_sorted = dataframe.sort_values(['values'])
     print(dataframe_sorted)
@@ -14,4 +14,6 @@ def plot_histo(dictionary_to_plot):
     plt.xlabel("keys")
     plt.ylabel("values")
     plt.xticks([])
-    plt.show()
+    fig_name = "output/" + name_of_plot + ".png"
+    print(fig_name)
+    plt.savefig(fig_name)

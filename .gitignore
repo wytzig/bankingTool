@@ -129,6 +129,7 @@ dmypy.json
 .pyre/
 
 # custom ignore for this project specific
-resources/
+*.csv
 .idea/
+*.png
 
