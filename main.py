@@ -1,5 +1,3 @@
-from _multiprocessing import send
-
 import plotting
 import readingcsv
 
@@ -7,9 +5,10 @@ import readingcsv
 def user_input_switch():
     txt_input = input("Welcome to this ASN_BANK application!\n"
                       "Option 1. Enter a csv file_name to scan\n"
-                      "Option 2. Create a new group with search queries\n"
-                      "Option 3. Print all search queries\n"    # Still in progress
-                      "Option 4. Print this message again\n"
+                      "Option 2. Read csv in memory\n"
+                      "Option 3. Print all search queries\n"    # Not implemented 
+                      "Option 4. Plot current data\n"
+                      "Option 5. Print this message again\n"
                       "Enter a number: ")
     return input_switch(txt_input)
 
@@ -19,10 +18,11 @@ def input_switch(input_arg):
         readingcsv.ask_csv_file()
         return False
     elif input_arg == "2":
-        plotting.plot_histo(readingcsv.global_expense_value_dictionary)
-        return False
+        readingcsv.read_csv()
     elif input_arg == "4":
-        user_input_switch()
+        plotting.plot_histo(readingcsv.get_global_expense_value_dictionary())
+        return False
+    elif input_arg == "5":
         return False
     else:
         print("default, exiting program..")
@@ -31,6 +31,8 @@ def input_switch(input_arg):
 
 if __name__ == '__main__':
     while True:
+        print("======================")
         if user_input_switch():
             break
+        print("\n\n")
     # file names: resources/0708742548_28122020_215932.csv
