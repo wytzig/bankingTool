@@ -1,5 +1,6 @@
 import plotting
 import readingcsv
+import query
 
 
 def user_input_switch():
@@ -7,6 +8,8 @@ def user_input_switch():
                       "Option 1. Enter a csv file_name to scan\n"
                       "Option 2. Read csv in memory\n"
                       "Option 3. Plot current data\n"
+                      "Option 4. Create search query\n"
+                      "Option 5. Show all search queries\n"
                       "Option 9. Print this message again\n"
                       "Enter a number: ")
     return input_switch(txt_input)
@@ -22,6 +25,10 @@ def input_switch(input_arg):
         plot_name = input("What is the name of the fig?: ")
         plotting.plot_histo(readingcsv.get_global_expense_value_dictionary(), plot_name)
         return False
+    elif input_arg == "4":
+        query.create_query()
+    elif input_arg == "5":
+        query.read_queries()
     elif input_arg == "9":
         return False
     else:
