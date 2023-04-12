@@ -14,3 +14,8 @@ images
   - The project *can* have a 'resources/' folder for input files
 
 both of these files are ignored in the .gitignore
+
+
+
+### update 2023.1
+Unfortuatly ASN has added these features to their own browser and mobile apps which makes this project quite redundand. You won't be seeing much updates on this project unless I feel like it :)  
